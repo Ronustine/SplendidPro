@@ -1,0 +1,11 @@
+/.metadata
+/RemoteSystemsTempFiles
+
+/simplify-common/target/
+/simplify-common/.project
+/simplify-platform/target/
+/simplify-platform/.project
+/simplify-web/target/
+/simplify-web/.project
+
+*.class

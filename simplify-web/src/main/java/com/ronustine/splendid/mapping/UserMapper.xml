@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.founder.emr.dao.UserMapper">
-  <resultMap id="BaseResultMap" type="com.founder.emr.pojo.User">
+<mapper namespace="com.ronustine.splendid.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.ronustine.splendid.pojo.User">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -39,7 +39,7 @@
   <sql id="Base_Column_List">
     id, user_name, password, age
   </sql>
-  <select id="selectByExample" parameterType="com.founder.emr.pojo.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.ronustine.splendid.pojo.UserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -63,13 +63,13 @@
     delete from user_t
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.founder.emr.pojo.User">
+  <insert id="insert" parameterType="com.ronustine.splendid.pojo.User">
     insert into user_t (id, user_name, password, 
       age)
     values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.founder.emr.pojo.User">
+  <insert id="insertSelective" parameterType="com.ronustine.splendid.pojo.User">
     insert into user_t
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -100,13 +100,13 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.founder.emr.pojo.UserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.ronustine.splendid.pojo.UserExample" resultType="java.lang.Integer">
     select count(*) from user_t
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="com.founder.emr.pojo.User">
+  <update id="updateByPrimaryKeySelective" parameterType="com.ronustine.splendid.pojo.User">
     update user_t
     <set>
       <if test="userName != null">
@@ -121,7 +121,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.founder.emr.pojo.User">
+  <update id="updateByPrimaryKey" parameterType="com.ronustine.splendid.pojo.User">
     update user_t
     set user_name = #{userName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

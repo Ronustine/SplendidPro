@@ -1,11 +1,21 @@
 /.metadata
 /RemoteSystemsTempFiles
+/Servers
+/.recommenders
 
 /simplify-common/target/
 /simplify-common/.project
+/simplify-common/.settings
+/simplify-common/.classpath
+
 /simplify-platform/target/
 /simplify-platform/.project
+/simplify-platform/.settings
+/simplify-platform/.classpath
+
 /simplify-web/target/
 /simplify-web/.project
+/simplify-web/.settings
+/simplify-web/.classpath
 
 *.class

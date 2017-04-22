@@ -10,7 +10,7 @@
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-	<context:component-scan base-package="com.founder.emr.controller" />
+	<context:component-scan base-package="com.ronustine.splendid.controller" />
 	<!--避免IE执行AJAX时，返回JSON出现下载文件 -->
 	<bean id="mappingJacksonHttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
@@ -56,27 +56,4 @@
 		<property name="maxInMemorySize" value="40960" />
 	</bean>
 
-	<bean id="testJob" class="com.founder.emr.service.impl.AutoTaskService" />
-	<bean id="testJobDetail"
-		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		<property name="targetObject" ref="testJob" />
-		<property name="targetMethod" value="printTask" />
-		<property name="concurrent" value="false" />
-		<!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
-	</bean>
-
-	<bean id="testTrigger"
-		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-		<property name="jobDetail" ref="testJobDetail" />
-		<property name="cronExpression" value="*/1 * * * * ?" /><!-- 每隔1秒钟触发一次 -->
-	</bean>
-
-	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-		<property name="triggers">
-			<list>
-				<ref bean="testTrigger" />
-			</list>
-		</property>
-		<property name="autoStartup" value="true" />
-	</bean>
 </beans>

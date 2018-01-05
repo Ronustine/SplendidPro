@@ -1,4 +1,4 @@
-﻿package com.ronustine.splendid.simplify.WeChatPublicServerSecret.qq.weixin.mp.aes;
+package com.ronustine.splendid.simplify.WeChatPublicServerSecret.qq.weixin.mp.aes;
 
 @SuppressWarnings("serial")
 public class AesException extends Exception {

@@ -2,8 +2,6 @@ package com.ronustine.splendid.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,13 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.ronustine.splendid.service.impl.WeChatCommonService;
+import com.ronustine.splendid.service.IWeChatCommonService;
 
 @Controller
 @RequestMapping("/WeChatPublicServerOne")
 public class WeChatPublicServerOneController {
 	@Autowired
-	private WeChatCommonService weChatCommonService;
+	private IWeChatCommonService weChatCommonService;
 	
 	/**
 	 * 微信服务器配置

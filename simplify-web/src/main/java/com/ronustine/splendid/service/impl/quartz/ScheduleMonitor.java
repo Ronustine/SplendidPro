@@ -1,5 +1,6 @@
-package com.founder.isp.fpay.service.impl.quartz;
+package com.ronustine.splendid.service.impl.quartz;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +26,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.founder.isp.common.pojo.CompoundPaykey;
-import com.founder.isp.fpay.service.CompoundPayKeyService;
+import com.ronustine.splendid.simplify.quartz.QuartzSetting;
 
 @Configuration
 @EnableScheduling
@@ -55,9 +55,6 @@ public class ScheduleMonitor {
     JobKey jobKey;
 	JobDetail jobDetail;
 	
-	@Autowired
-	CompoundPayKeyService compoundPayKeyService;
-
 	{
 		jobKey = new JobKey(JOB_NAME + NAME, JOB_GROUP_NAME);
 		jobDetail = JobBuilder.newJob(ScheduleTask.class).
@@ -67,18 +64,18 @@ public class ScheduleMonitor {
 	
 	@Scheduled(fixedRate = 1000 * 10) // 每隔5s查库，并根据查询结果决定是否重新设置定时任务
 	public void scheduleUpdateCronTrigger() throws SchedulerException {
-		List<CompoundPaykey> compoundPayKeys = compoundPayKeyService.getAllUsingPaykey();
-		log.info("需要轮转paykey的数量:{}", compoundPayKeys.size());
+		List<QuartzSetting> quartzSettingList = new ArrayList<QuartzSetting>();
+		log.info("需要轮转paykey的数量:{}", quartzSettingList.size());
 
 		JobDetail temp = scheduler.getJobDetail(jobKey);
 		if (null == temp) {
 			scheduler.addJob(jobDetail,false);
 		}
 		
-		for (CompoundPaykey cPaykey : compoundPayKeys) {
+		for (QuartzSetting quartzSetting : quartzSettingList) {
 			StringBuffer triggerName = new StringBuffer();
-			triggerName.append(TRIGGER_NAME).append(NAME).append(cPaykey.getCompoundPaykey());
-			String compoundPaykeyCron = cPaykey.getRule();
+			triggerName.append(TRIGGER_NAME).append(NAME).append(quartzSetting.getRuleName());
+			String compoundPaykeyCron = quartzSetting.getRule();
 			TriggerKey triggerKey = new TriggerKey(triggerName.toString(), TRIGGER_GROUP_NAME);
 			
 			log.info("检查触发器，checking triggers：{}",  triggerName.toString());
@@ -89,7 +86,7 @@ public class ScheduleMonitor {
                         newTrigger().
                         withIdentity(triggerKey).
                         withSchedule(CronScheduleBuilder.cronSchedule(compoundPaykeyCron)).
-                        usingJobData("compoundPaykey", cPaykey.getCompoundPaykey()).
+                        usingJobData("compoundPaykey", quartzSetting.getRuleName()).
                         forJob(jobDetail).build();
 				scheduler.scheduleJob(trigger);
 			}
@@ -102,7 +99,7 @@ public class ScheduleMonitor {
 			log.info("修改触发器：{}",  triggerName.toString());
 			CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(compoundPaykeyCron);
 			trigger = trigger.getTriggerBuilder().withIdentity(triggerKey).withSchedule(scheduleBuilder)
-					.usingJobData("compoundPaykey", cPaykey.getCompoundPaykey()).build();
+					.usingJobData("compoundPaykey", quartzSetting.getRuleName()).build();
 			scheduler.rescheduleJob(triggerKey, trigger);
 		}
 

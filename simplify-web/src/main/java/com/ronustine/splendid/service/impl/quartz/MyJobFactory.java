@@ -1,4 +1,4 @@
-package com.founder.isp.fpay.service.impl.quartz;
+package com.ronustine.splendid.service.impl.quartz;
 
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.annotation.Autowired;

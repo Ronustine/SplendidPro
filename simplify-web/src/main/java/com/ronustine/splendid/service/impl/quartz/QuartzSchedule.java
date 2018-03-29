@@ -1,4 +1,4 @@
-package com.founder.isp.fpay.service.impl.quartz;
+package com.ronustine.splendid.service.impl.quartz;
 
 import java.io.IOException;
 import java.util.Properties;

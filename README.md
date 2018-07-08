@@ -2,13 +2,13 @@
 
 ## >>develop less, think more<<
 
-###simplify-platform
+### simplify-platform
 > 用于：
 
 1. **聚合，含simplify-common、simplify-web**
 2. **父模块，含simplify-common、simplify-web**
 
-###simplify-common
+### simplify-common
 > 常用需求
 
 1. **导出功能**
@@ -17,7 +17,7 @@
 4. **序列化**
 
 
-###simplify-web
+### simplify-web
 > 暂不分解
 
 1. **Spring + SpringMVC + Mybatis**

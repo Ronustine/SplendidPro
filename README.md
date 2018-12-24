@@ -1,23 +1,23 @@
 # SplendidPro
 
-## >>develop less, think more<<
+develop less, think more
 
-###simplify-platform
-> ÓÃÓÚ£º
+### simplify-platform
+> ç”¨äºï¼š
 
-1. **¾ÛºÏ£¬º¬simplify-common¡¢simplify-web**
-2. **¸¸Ä£¿é£¬º¬simplify-common¡¢simplify-web**
+1. **èšåˆï¼Œå«simplify-commonã€simplify-web**
+2. **çˆ¶æ¨¡å—ï¼Œå«simplify-commonã€simplify-web**
 
-###simplify-common
-> ³£ÓÃĞèÇó
+### simplify-common
+> å¸¸ç”¨éœ€æ±‚
 
-1. **µ¼³ö¹¦ÄÜ**
-2. **µ¹¼ÆÊ±×Ô¶¯µ÷ÓÃÈÎÎñ**
-3. **ÈÕÆÚ³£ÓÃ·½·¨**
-4. **ĞòÁĞ»¯**
+1. **å¯¼å‡ºåŠŸèƒ½**
+2. **å€’è®¡æ—¶è‡ªåŠ¨è°ƒç”¨ä»»åŠ¡**
+3. **æ—¥æœŸå¸¸ç”¨æ–¹æ³•**
+4. **åºåˆ—åŒ–**
 
 
-###simplify-web
-> Ôİ²»·Ö½â
+### simplify-web
+> æš‚ä¸åˆ†è§£
 
 1. **Spring + SpringMVC + Mybatis**

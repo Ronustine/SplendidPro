@@ -7,7 +7,7 @@ import java.util.Map;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
 
-import com.ronustine.splendid.simplify.JacksonUtils;
+import com.ronustine.splendid.simplify.JsonUtils;
 
 
 public abstract class AbstractConfig {
@@ -130,6 +130,6 @@ public abstract class AbstractConfig {
 	
 	/** 转成JSON格式 */
 	public String toJSON(){
-		return JacksonUtils.toJson(toMap());
+		return JsonUtils.toJson(toMap());
 	}
 }

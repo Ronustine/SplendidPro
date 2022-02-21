@@ -1,6 +1,6 @@
 # SplendidPro
 
-develop less, think more
+maven聚合学习
 
 ### simplify-platform
 > 用于：
